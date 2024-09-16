@@ -2,6 +2,9 @@
 Gruppexamination backend fördjupning med Serverless framework, API Gateway, AWS Lambda, DynamoDB
 __________________________________________________________________________________________________________
 
+https://github.com/users/GitMicaFri/projects/2
+______________________________________________________________________________________________________________________
+
 Gruppexamination: Bonz.ai
 Bakgrund
 Bonz.ai, företaget bakom hotellet, har alltid strävat efter att vara i framkant när det gäller att använda teknik för att förbättra kundupplevelsen. De har en stark kultur av innovation och är inte rädda för att tänka utanför boxen.
