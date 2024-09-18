@@ -33,7 +33,7 @@ functions:
     handler: functions/checkRoomAvailability/index.handler
     events:
       - httpApi:
-          path: /rooms
+          path: /bookings/available
           method: get
 
   createBooking:
@@ -43,11 +43,11 @@ functions:
           path: /bookings/create
           method: post
 
-  getAllBookings:
-    handler: functions/getAllBookings/index.handler
+  getAllRooms:
+    handler: functions/getAllRooms/index.handler
     events:
       - httpApi:
-          path: /bookings
+          path: /rooms
           method: get
 
   getBookingById:
