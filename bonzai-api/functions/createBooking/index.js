@@ -21,9 +21,9 @@ module.exports.handler = async (event) => {
         }
 
 
-
         const roomResult = await dynamoDb.get(roomParameters)
         const room = roomResult.Item
+
 
         // Kontroll för om rummet finns i databasen
         if(!room) {
@@ -33,6 +33,7 @@ module.exports.handler = async (event) => {
             }
         }
 
+
         // Kontroll för om rummets status är available = true
         if(!room.available) {
             return {
@@ -41,11 +42,14 @@ module.exports.handler = async (event) => {
             }
         }
 
+
         // Kontroll för om antalet besökare ligger inom ramen för rummets kapacitet
-        if(numberOfGuests > room.maxGuests) {
+        const numGuests = parseInt(numberOfGuests)
+
+        if(numGuests > room.maxGuests) {
             return {
                 statusCode: 400,
-                body: `This room can only take ${JSON.stringify(room.maxGuests)}, not ${JSON.stringify(numberOfGuests)}.`
+                body: `This room can only take ${room.maxGuests} person(s), not ${numberOfGuests} person(s).`
             }
         }
 
