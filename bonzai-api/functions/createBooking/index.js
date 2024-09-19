@@ -35,7 +35,7 @@ module.exports.handler = async (event) => {
 
 
         // Kontroll för om rummets status är available = true
-        if(!room.available) {
+        if(room.available === "false") {
             return {
                 statusCode: 400,
                 body: JSON.stringify({ message: 'Room is not available.'})
