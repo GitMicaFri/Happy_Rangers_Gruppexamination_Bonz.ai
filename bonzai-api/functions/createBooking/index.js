@@ -63,7 +63,7 @@ module.exports.handler = async (event) => {
                 roomId,
                 guestName,
                 guestEmail,
-                numberOfGuests,
+                numGuests,
                 checkIn,
                 checkOut,
                 price: room.price,
