@@ -26,7 +26,7 @@ module.exports.handler = async (event) => {
         const room = roomResult.Item
 
         // Kontroll för om rummet finns i databasen
-        if(!room.Item) {
+        if(!room) {
             return {
                 statusCode: 404,
                 body: JSON.stringify({ message: 'Room not found!'})
@@ -65,7 +65,8 @@ module.exports.handler = async (event) => {
                 price: room.price,
                 roomType: room.roomType,
                 maxGuests: room.maxGusts,
-                available: "pending"
+                available: room.available,
+                status: "pending"
             }
         }
 
