@@ -22,6 +22,37 @@ module.exports.handler = async (event) => {
             }
         }
 
+        // Hämta rummet för controllers
+        const getRoomParams = {
+            TableName: 'BonzaiBookings',
+            Key: { roomId }
+        }
+
+        const roomResult = await dynamoDb.get(getRoomParams)
+        const room = roomResult.Item
+
+        if(!room) {
+            return {
+                statusCode: 404,
+                body: JSON.stringify({ message: 'Room not found'})
+            }
+        }
+
+        if (room.available === 'false') {
+            return {
+                statusCode: 400,
+                body: JSON.stringify({ message: 'Room is not available'})
+            }
+        }
+
+        if (numGuests > room.maxGuests) {
+            return {
+                statusCode: 400,
+                body: JSON.stringify({ message: `This room can only take ${room.maxGuests}, not ${numGuests}.`})
+            }
+        }
+
+        // Om alla kontroller passar, uppdaterar vi databasen:
         const params = {
             TableName: 'BonzaiBookings',
             Key: { roomId },
