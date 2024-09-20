@@ -69,7 +69,7 @@ module.exports.handler = async (event) => {
                 price: room.price,
                 roomType: room.roomType,
                 maxGuests: room.maxGuests,
-                available: room.available,
+                available: "false",
                 status: "pending"
             }
         }

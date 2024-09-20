@@ -47,7 +47,7 @@ functions:
     handler: functions/checkRoomAvailability/index.handler
     events:
       - httpApi:
-          path: /bookings/available
+          path: /bookings/available/{roomId}
           method: get
 
   createBooking:
