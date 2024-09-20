@@ -1,5 +1,5 @@
 # "org" ensures this Service is used with the correct Serverless Framework Access Key.
-org: j0113
+org: chocolina
 # "service" is the name of this project. This will also be added to your AWS resource names.
 service: bonzai-api
 
@@ -7,6 +7,10 @@ provider:
   name: aws
   runtime: nodejs18.x
   region: eu-north-1
+  logs:
+    restAPI: true
+    httpApi: true
+    websocket: true
 
   iamRoleStatements:
     - Effect: Allow
@@ -20,6 +24,16 @@ provider:
         - dynamodb:DeleteItem
       Resource:
         - arn:aws:dynamodb:eu-north-1:*:table/BonzaiBookings
+
+package:
+  exclude:
+    - '.git/**'
+    - '*.log'
+    - '.env'
+    - 'vscode/**'
+    - '.serverless/**'
+    - '.gitignore'
+    - 'idea/**'
 
 functions:
   cancelBooking:
