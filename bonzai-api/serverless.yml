@@ -1,5 +1,5 @@
 # "org" ensures this Service is used with the correct Serverless Framework Access Key.
-org: chocolina
+org: j0113
 # "service" is the name of this project. This will also be added to your AWS resource names.
 service: bonzai-api
 
@@ -27,13 +27,13 @@ provider:
 
 package:
   exclude:
-    - '.git/**'
-    - '*.log'
-    - '.env'
-    - 'vscode/**'
-    - '.serverless/**'
-    - '.gitignore'
-    - 'idea/**'
+    - ".git/**"
+    - "*.log"
+    - ".env"
+    - "vscode/**"
+    - ".serverless/**"
+    - ".gitignore"
+    - "idea/**"
 
 functions:
   cancelBooking:
@@ -75,7 +75,7 @@ functions:
     handler: functions/updateBooking/index.handler
     events:
       - httpApi:
-          path: /bookings/update
+          path: /bookings/{roomId}/update
           method: put
 
   verifyBooking:
